@@ -1,23 +1,28 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Order } from "./order.entity";
 
-@Entity()
+//unexpected '@' [E0042]
 export class OrderItem {
-    @PrimaryGeneratedColumn()
-    id: number; // Unique identifier for the order item
+    //unexpected '@' [E0042],missing body for function [E0172]
+    id; // Unique identifier for the order item
+    //TypeScript type annotations are not allowed in JavaScript code [E0224]
 
-    @Column()
-    productTitle: string; // Title of the product in the order item
+    //unexpected '@' [E0042],missing body for function [E0172]
+    productTitle; // Title of the product in the order item
+    //TypeScript type annotations are not allowed in JavaScript code [E0224]
 
-    @Column()
-    price: number; // Price of the product in the order item
+    //unexpected '@' [E0042],missing body for function [E0172]
+    price; // Price of the product in the order item
+    //TypeScript type annotations are not allowed in JavaScript code [E0224]
 
-    @Column()
-    quantity: number; // Quantity of the product in the order item
+    //unexpected '@' [E0042],missing body for function [E0172]
+    quantity; // Quantity of the product in the order item
+    //TypeScript type annotations are not allowed in JavaScript code [E0224]
 
-    @ManyToOne(() => Order)
-    @JoinColumn()
-    order: Order; // Order associated with the order item
+    //unexpected '@' [E0042],invalid function parameter [E0151],missing body for function [E0172]
+    //unexpected '@' [E0042],missing body for function [E0172]
+    order; // Order associated with the order item
+    //TypeScript type annotations are not allowed in JavaScript code [E0224]
 
     // No additional methods or functionalities added in this class
 }
