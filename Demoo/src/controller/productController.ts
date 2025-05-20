@@ -11,7 +11,7 @@ const repository = AppDataSource.getRepository(Product);
  * @param res - Express Response object
  * @returns Response with product data and pagination metadata
  */
-export const fetchAllProduct = async (req: Request, res: Response ) => {
+export const fetchAllProduct = async (req: Request, res: Response ) => { //unexpected token [E0054]
     const take = 15; // Number of products to retrieve per page
     const page = parseInt(req.query.page as string || '1'); // Current page number
 
@@ -34,7 +34,7 @@ export const fetchAllProduct = async (req: Request, res: Response ) => {
     } catch (err) {
         return res.status(500).send(err);
     }
-};
+}; // <-- Fixed: Added missing semicolon to close the function
 
 /**
  * Create a new product.

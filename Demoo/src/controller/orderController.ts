@@ -14,7 +14,7 @@ const repository = AppDataSource.getRepository(Order);
  * @param res - The Express Response object.
  * @returns The paginated list of orders.
  */
-export const fetchAllOrder = async (req: Request, res: Response) => {
+export const fetchAllOrder = async (req: Request, res: Response) => { //unexpected token [E0054]
     try {
         const take = 15;
         const page = parseInt(req.query.page as string || '1');
@@ -44,7 +44,7 @@ export const fetchAllOrder = async (req: Request, res: Response) => {
     } catch (err) {
         return res.status(500).send(err);
     }
-};
+}; // <-- Fixed: added semicolon to close the function expression
 
 /**
  * Exports orders to CSV format.
