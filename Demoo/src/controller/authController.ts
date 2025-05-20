@@ -12,7 +12,7 @@ import { sign } from "jsonwebtoken";
  * @param res - The Express Response object.
  * @returns The registered user.
  */
-export const Register = async (req: Request, res: Response) => {
+export const Register = async (req: Request, res: Response) => { //unexpected token [E0054]
     const body = req.body;
 
     const { error } = RegisterValidation.validate({
@@ -41,7 +41,7 @@ export const Register = async (req: Request, res: Response) => {
     } catch (err) {
         return res.status(500).send(err);
     }
-};
+}; // <-- add missing semicolon for function end
 
 /**
  * Authenticates a user and generates a JWT token.
