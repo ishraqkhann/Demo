@@ -4,29 +4,29 @@ import { OrderItem } from "./order-item.entity";
 @Entity()
 export class Order {
     @PrimaryGeneratedColumn()
-    id: number; // Unique identifier for the order
+    id;
 
     @Column()
-    lastName: string; // Last name of the customer
+    lastName;
 
     @Column()
-    firstName: string; // First name of the customer
+    firstName;
 
     @Column()
-    email: string; // Email of the customer
+    email;
 
     @CreateDateColumn()
-    created_at: string; // Timestamp indicating when the order was created
+    created_at;
 
     @OneToMany(() => OrderItem, orderItems => orderItems.order)
-    order_items: OrderItem[]; // Array of order items associated with the order
+    order_items;
 
     /**
      * Retrieves the full name of the customer.
      *
      * @returns The full name of the customer.
      */
-    public get name(): string {
+    get name() {
         return `${this.firstName} ${this.lastName}`;
     }
 
@@ -35,7 +35,7 @@ export class Order {
      *
      * @returns The total price of the order.
      */
-    public get total(): number {
-        return this.order_items.reduce((sum: number, item: OrderItem) => sum + item.quantity * item.price, 0);
+    get total() {
+        return this.order_items.reduce((sum, item) => sum + item.quantity * item.price, 0);
     }
 }
