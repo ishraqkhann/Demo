@@ -1,0 +1,347 @@
+openapi: 3.0.0
+info:
+  title: API Documentation
+  version: 1.0.0
+servers:
+  - url: https://ts.test.com
+paths:
+  /api/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                passwordConf:
+                  type: string
+      responses:
+        '200':
+          description: User registered successfully
+  /api/login:
+    post:
+      summary: Login a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: User logged in successfully
+  /api/user:
+    get:
+      summary: Get authenticated user's information
+      responses:
+        '200':
+          description: User information retrieved successfully
+    put:
+      summary: Update authenticated user's information
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '200':
+          description: User information updated successfully
+  /api/user/update/password:
+    put:
+      summary: Update authenticated user's password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newpass:
+                  type: string
+                passwordConf:
+                  type: string
+      responses:
+        '200':
+          description: User password updated successfully
+  /api/logout:
+    post:
+      summary: Logout a user
+      responses:
+        '200':
+          description: User logged out successfully
+  /api/users:
+    get:
+      summary: Fetch all users with pagination
+      responses:
+        '200':
+          description: Users fetched successfully
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                roleId:
+                  type: integer
+      responses:
+        '200':
+          description: User created successfully
+  /api/users/{id}:
+    get:
+      summary: Get a single user by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: User fetched successfully
+    put:
+      summary: Update user information
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                roleId:
+                  type: integer
+      responses:
+        '200':
+          description: User information updated successfully
+    delete:
+      summary: Delete a user by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: User deleted successfully
+  /api/permission:
+    get:
+      summary: Fetch all permissions
+      responses:
+        '200':
+          description: Permissions fetched successfully
+  /api/role:
+    get:
+      summary: Fetch all roles
+      responses:
+        '200':
+          description: Roles fetched successfully
+    post:
+      summary: Create a new role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                permissions:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: Role created successfully
+  /api/role/{id}:
+    get:
+      summary: Get a single role by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Role fetched successfully
+    put:
+      summary: Update role information
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                permissions:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: Role information updated successfully
+    delete:
+      summary: Delete a role by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Role deleted successfully
+  /api/upload:
+    post:
+      summary: Upload an image file
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Image uploaded successfully
+  /api/product:
+    get:
+      summary: Fetch all products with pagination
+      responses:
+        '200':
+          description: Products fetched successfully
+    post:
+      summary: Create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                image:
+                  type: string
+                price:
+                  type: number
+      responses:
+        '200':
+          description: Product created successfully
+  /api/product/{id}:
+    get:
+      summary: Get a product by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Product fetched successfully
+    put:
+      summary: Update product information
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                image:
+                  type: string
+                price:
+                  type: number
+      responses:
+        '200':
+          description: Product information updated successfully
+    delete:
+      summary: Delete a product by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Product deleted successfully
+  /api/order:
+    get:
+      summary: Fetch all orders with pagination
+      responses:
+        '200':
+          description: Orders fetched successfully
+  /api/export:
+    post:
+      summary: Export orders to CSV format
+      responses:
+        '200':
+          description: Orders exported successfully
+  /api/chart:
+    get:
+      summary: Retrieve the chart data for orders
+      responses:
+        '200':
+          description: Chart data for orders retrieved successfully
