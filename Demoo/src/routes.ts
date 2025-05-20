@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import express from 'express';
 import {
     authenticatedUser,
     Login,
@@ -34,7 +34,7 @@ import {
 import { authMiddleware } from './middleware/auth.middleware';
 import { permissionMiddleware } from './middleware/permission.middleware';
 
-export const routes = (router: Router) => {
+export const routes = (router) => {
     /**
      * User Authentication Routes
      */

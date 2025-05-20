@@ -7,8 +7,8 @@ import { User } from "../entity/user.entity";
  * @param access The access level required for the route (e.g., "Product")
  * @returns The middleware function
  */
-export const permissionMiddleware = (access: string) => {
-    return async (req: Request, res: Response, next: Function) => {
+export const permissionMiddleware = (access) => { //TypeScript type annotations are not allowed in JavaScript code [E0224]
+    return async (req, res, next) => { //unexpected token [E0054]
         const id = req['uId']; // Retrieve the user ID from the request object
         const repository = getManager().getRepository(User); // Get the repository for the User entity
 

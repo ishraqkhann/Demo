@@ -11,9 +11,9 @@ const userRepository = AppDataSource.getRepository(User);
  * @param req - The request object.
  * @param res - The response object.
  */
-export const fetchAllUser = async (req: Request, res: Response) => {
+export const fetchAllUser = async (req: Request, res: Response) => { //unexpected token [E0054]
     const take = 15;
-    const page = parseInt(req.query.page as string || '1');
+    const page = parseInt((req.query.page as string) || '1');
 
     try {
         const [data, total] = await userRepository.findAndCount({
