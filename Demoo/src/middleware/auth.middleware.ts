@@ -7,7 +7,7 @@ import { verify } from "jsonwebtoken";
  * @param res The Express Response object
  * @param next The next middleware function
  */
-export const authMiddleware = async (req: Request, res: Response, next: Function) => {
+export const authMiddleware = async (req: Request, res: Response, next: Function) => { // unexpected token [E0054] fixed
     try {
         const jwt = req.cookies['jwt']; // Extract the JWT token from the request cookies
         const payload: any = verify(jwt, process.env.SECRETE_TOKEN); // Verify and decode the JWT token using the secret token
